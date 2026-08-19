@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Divertieventos · Diversión para los más pequeños</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FDF6EF;
+    --cream-2:#FBEFE4;
+    --ink:#3B332E;
+    --ink-soft:#6B6058;
+    --pink:#E8607F;
+    --pink-deep:#D94D6C;
+    --pink-light:#FBE2E7;
+    --sage:#7E9B77;
+    --sage-deep:#5F7A58;
+    --sage-light:#E9F1E4;
+    --sage-dark:#3E4F3A;
+    --gold:#EAB54B;
+    --whatsapp:#25D366;
+    --radius-lg:30px;
+    --radius-md:20px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--cream);color:var(--ink);
+    font-family:'Nunito',sans-serif;font-size:16.5px;line-height:1.65;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:600;margin:0;letter-spacing:-0.01em;}
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;max-width:100%;}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;}
+  ul{margin:0;padding:0;list-style:none;}
+  section{position:relative;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 30px;}
+  :focus-visible{outline:3px solid var(--pink-deep);outline-offset:3px;border-radius:6px;}
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important;}
+  }
+
+  /* decorative doodles */
+  .doodle{position:absolute;opacity:.9;pointer-events:none;}
+
+  /* ---------- NAV ---------- */
+  header{position:sticky;top:0;z-index:50;background:rgba(253,246,239,0.92);backdrop-filter:blur(8px);border-bottom:1px solid rgba(59,51,46,0.07);}
+  nav.wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 30px;gap:20px;}
+  .logo-block{display:flex;align-items:center;gap:10px;}
+  .logo-mark{width:44px;height:44px;flex:none;}
+  .logo-text{display:flex;flex-direction:column;line-height:1.05;}
+  .logo-text .name{font-family:'Caveat',cursive;font-weight:700;font-size:1.75rem;color:var(--pink-deep);}
+  .logo-text .tagline{font-size:0.6rem;letter-spacing:0.12em;color:var(--sage-deep);font-weight:800;text-transform:uppercase;}
+  .navlinks{display:flex;gap:28px;align-items:center;}
+  .navlinks a{font-weight:700;font-size:0.95rem;color:var(--ink-soft);position:relative;padding:4px 0;}
+  .navlinks a.active,.navlinks a:hover{color:var(--pink-deep);}
+  .navlinks a.active::after{content:"";position:absolute;left:0;bottom:-3px;width:100%;height:2.5px;background:var(--pink);border-radius:2px;}
+  .nav-cta{display:inline-flex;align-items:center;gap:8px;background:var(--pink);color:#fff;padding:11px 20px;border-radius:100px;font-weight:800;font-size:0.9rem;transition:background .18s ease, transform .18s ease;}
+  .nav-cta:hover{background:var(--pink-deep);transform:translateY(-1px);}
+  .hamburger{display:none;padding:8px;flex-direction:column;gap:5px;}
+  .hamburger span{width:24px;height:3px;background:var(--ink);border-radius:2px;}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:56px 0 90px;position:relative;overflow:hidden;}
+  .hero .wrap{display:grid;grid-template-columns:1fr 1.15fr;gap:0;align-items:center;}
+  .hero-copy{
+    position:relative;z-index:3;background:#fff;
+    border-radius:36px;padding:44px 40px;
+    margin-right:-70px;
+    box-shadow:0 30px 60px -30px rgba(59,51,46,0.25);
+  }
+  .hero-copy h1{font-size:clamp(1.9rem,3.2vw,2.5rem);line-height:1.18;color:var(--pink-deep);}
+  .hero-copy h1 .sage{color:var(--sage-deep);}
+  .hero-copy p.lead{margin-top:18px;color:var(--ink-soft);font-size:1.03rem;}
+  .hero-copy .age-line{margin-top:16px;font-weight:800;color:var(--pink-deep);font-size:1.05rem;}
+  .hero-copy .age-sub{margin:2px 0 0;color:var(--ink-soft);font-size:0.92rem;}
+  .hero-copy .btn-primary{margin-top:26px;}
+  .hero-photo{
+    position:relative;z-index:1;
+    aspect-ratio:4/3.1;border-radius:36px;overflow:hidden;
+    background:linear-gradient(135deg,var(--sage-light),var(--pink-light));
+  }
+  .hero-photo img{width:100%;height:100%;object-fit:cover;}
+  .btn-primary{
+    display:inline-flex;align-items:center;gap:9px;
+    background:var(--pink);color:#fff;padding:15px 26px;border-radius:100px;
+    font-weight:800;font-size:1rem;
+    box-shadow:0 12px 24px -10px rgba(232,96,127,0.55);
+    transition:transform .18s ease, background .18s ease;
+  }
+  .btn-primary:hover{transform:translateY(-2px);background:var(--pink-deep);}
+  .btn-primary.small{padding:12px 20px;font-size:0.9rem;}
+
+  /* ---------- SERVICIOS ---------- */
+  .servicios{padding:100px 0 90px;text-align:center;}
+  .kicker{color:var(--pink-deep);font-weight:800;font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase;}
+  .servicios h2{font-size:clamp(1.6rem,3vw,2.15rem);margin-top:12px;max-width:640px;margin-left:auto;margin-right:auto;line-height:1.3;}
+  .servicios h2 .sage{color:var(--sage-deep);}
+  .serv-grid{margin-top:56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:26px;text-align:center;}
+  .serv-card{background:#fff;border-radius:var(--radius-lg);padding:30px 22px 28px;box-shadow:0 20px 40px -28px rgba(59,51,46,0.35);position:relative;transition:transform .2s ease;}
+  .serv-card:hover{transform:translateY(-6px);}
+  .serv-photo{
+    width:130px;height:130px;border-radius:50%;margin:0 auto 18px;position:relative;overflow:hidden;
+    background:linear-gradient(135deg,var(--sage-light),var(--pink-light));
+    display:flex;align-items:center;justify-content:center;
+  }
+  .serv-photo img{width:100%;height:100%;object-fit:cover;}
+  .serv-badge{
+    position:absolute;top:-6px;left:-6px;width:40px;height:40px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;box-shadow:0 6px 14px -6px rgba(0,0,0,0.25);z-index:2;
+  }
+  .serv-card:nth-child(1) .serv-badge{background:var(--pink-light);}
+  .serv-card:nth-child(2) .serv-badge{background:var(--sage-light);}
+  .serv-card:nth-child(3) .serv-badge{background:var(--pink-light);}
+  .serv-card:nth-child(4) .serv-badge{background:var(--sage-light);}
+  .serv-card:nth-child(5) .serv-badge{background:var(--pink-light);}
+  .serv-card h3{font-size:1.15rem;margin-bottom:8px;}
+  .serv-card:nth-child(odd) h3{color:var(--pink-deep);}
+  .serv-card:nth-child(even) h3{color:var(--sage-deep);}
+  .serv-card p{color:var(--ink-soft);font-size:0.92rem;margin:0;}
+  .heart-div{margin-top:14px;font-size:0.8rem;opacity:0.55;}
+
+  /* ---------- POR QUE ---------- */
+  .porque{background:var(--cream-2);padding:56px 0;}
+  .porque .wrap{display:grid;grid-template-columns:0.9fr 2fr;gap:40px;align-items:center;}
+  .porque h2{font-size:clamp(1.4rem,2.6vw,1.85rem);line-height:1.3;color:var(--pink-deep);}
+  .porque h2 .sage{color:var(--sage-deep);}
+  .porque-list{display:grid;grid-template-columns:repeat(6,1fr);gap:18px;}
+  .porque-item{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;}
+  .porque-ico{
+    width:56px;height:56px;border-radius:50%;border:2px solid var(--pink);
+    display:flex;align-items:center;justify-content:center;background:#fff;
+  }
+  .porque-item:nth-child(even) .porque-ico{border-color:var(--sage);}
+  .porque-item span{font-size:0.83rem;font-weight:700;color:var(--ink-soft);line-height:1.3;}
+
+  /* ---------- GALERIA ---------- */
+  .galeria{padding:96px 0 70px;text-align:center;}
+  .galeria h2{font-size:clamp(1.5rem,2.8vw,2rem);color:var(--pink-deep);margin-bottom:40px;}
+  .gal-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  .gal-photo{aspect-ratio:1/1.1;border-radius:22px;background:var(--sage-light);position:relative;overflow:hidden;}
+  .gal-photo img{width:100%;height:100%;object-fit:cover;transition:transform .3s ease;}
+  .gal-photo:hover img{transform:scale(1.06);}
+  .gal-note{margin-top:22px;color:var(--ink-soft);font-size:0.88rem;}
+  .galeria .btn-primary{margin-top:30px;}
+
+  /* ---------- CTA + CONTACT ---------- */
+  .cta-contact{background:#fff;padding:90px 0 100px;}
+  .cta-grid{display:grid;grid-template-columns:0.85fr 1.15fr 0.85fr;gap:0;background:var(--cream-2);border-radius:36px;overflow:hidden;}
+  .cta-col{padding:40px 34px;}
+  .cta-col.left{background:var(--pink-light);}
+  .cta-col.left h3{font-size:1.35rem;color:var(--pink-deep);line-height:1.3;}
+  .cta-col.left .av-big{width:50px;height:50px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:16px;}
+  .cta-col.left p{color:var(--ink-soft);font-size:0.93rem;margin:14px 0 22px;}
+  .cta-col.mid h3{font-size:1.1rem;margin-bottom:20px;color:var(--ink);}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
+  .field input,.field textarea{width:100%;border:2px solid rgba(59,51,46,0.12);background:#fff;border-radius:12px;padding:12px 14px;font-family:inherit;font-size:0.93rem;color:var(--ink);}
+  .field{margin-bottom:12px;}
+  .field input:focus,.field textarea:focus{border-color:var(--pink);outline:none;}
+  .form-msg{margin-top:12px;font-weight:800;color:var(--pink-deep);font-size:0.88rem;display:none;}
+  .cta-col.right h3{font-size:1.05rem;margin-bottom:18px;}
+  .also-item{display:flex;gap:12px;align-items:flex-start;margin-bottom:16px;}
+  .also-item .ico{width:34px;height:34px;border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;flex:none;font-size:1rem;}
+  .also-item strong{display:block;font-size:0.9rem;}
+  .also-item span{display:block;font-size:0.82rem;color:var(--ink-soft);}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--sage-dark);color:rgba(253,246,239,0.75);padding:38px 0;}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;}
+  footer .f-logo{display:flex;align-items:center;gap:10px;}
+  footer .f-logo .name{font-family:'Caveat',cursive;font-size:1.5rem;color:#fff;font-weight:700;}
+  footer .f-logo .tag{font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(253,246,239,0.6);font-weight:800;}
+  footer .f-social{display:flex;gap:14px;}
+  footer .f-social a{width:34px;height:34px;border-radius:50%;background:rgba(253,246,239,0.12);display:flex;align-items:center;justify-content:center;}
+  footer .f-copy{font-size:0.82rem;width:100%;text-align:center;margin-top:18px;color:rgba(253,246,239,0.5);}
+
+  /* floating whatsapp */
+  .fab-wa{
+    position:fixed;bottom:26px;right:26px;z-index:60;
+    width:58px;height:58px;border-radius:50%;background:var(--whatsapp);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 14px 30px -10px rgba(37,211,102,0.6);
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:980px){
+    .navlinks{display:none;}
+    .hamburger{display:flex;}
+    .hero .wrap{grid-template-columns:1fr;}
+    .hero-copy{margin-right:0;order:2;margin-top:-40px;}
+    .hero-photo{order:1;}
+    .serv-grid{grid-template-columns:repeat(2,1fr);}
+    .porque .wrap{grid-template-columns:1fr;text-align:center;}
+    .porque-list{grid-template-columns:repeat(3,1fr);}
+    .gal-row{grid-template-columns:repeat(3,1fr);}
+    .test-grid{grid-template-columns:1fr;}
+    .cta-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width:560px){
+    .serv-grid{grid-template-columns:1fr;}
+    .porque-list{grid-template-columns:repeat(2,1fr);}
+    .gal-row{grid-template-columns:repeat(2,1fr);}
+    .field-row{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#inicio" class="logo-block">
+      <svg class="logo-mark" viewBox="0 0 48 48" fill="none">
+        <path d="M6 30a18 18 0 0136 0" stroke="#E8607F" stroke-width="4" stroke-linecap="round"/>
+        <path d="M12 30a12 12 0 0124 0" stroke="#EAB54B" stroke-width="4" stroke-linecap="round"/>
+        <path d="M18 30a6 6 0 0112 0" stroke="#7E9B77" stroke-width="4" stroke-linecap="round"/>
+      </svg>
+      <span class="logo-text"><span class="name">Divertieventos</span><span class="tagline">Diversión para los más pequeños</span></span>
+    </a>
+    <ul class="navlinks">
+      <li><a href="#inicio" class="active">Inicio</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#galeria">Galería</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a href="https://wa.me/000000000000" target="_blank" rel="noopener" class="nav-cta">📱 Reservar ahora</a>
+    <button class="hamburger" aria-label="Abrir menú" id="hamburgerBtn"><span></span><span></span><span></span></button>
+  </nav>
+  <ul class="navlinks" id="mobileMenu" style="display:none;flex-direction:column;padding:0 30px 18px;">
+    <li style="padding:9px 0;"><a href="#inicio">Inicio</a></li>
+    <li style="padding:9px 0;"><a href="#servicios">Servicios</a></li>
+    <li style="padding:9px 0;"><a href="#galeria">Galería</a></li>
+    <li style="padding:9px 0;"><a href="#nosotros">Nosotros</a></li>
+    <li style="padding:9px 0;"><a href="#contacto">Contacto</a></li>
+  </ul>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="wrap">
+    <div class="hero-copy">
+      <h1>Diversión segura <br>para los <span class="sage">más pequeños</span></h1>
+      <p class="lead">Alquiler de Plaza Soft, juegos Montessori, mesitas y sillitas infantiles, y carpitas de pijamada para eventos.</p>
+      <p class="age-line">De 1 a 5 años</p>
+      <p class="age-sub">Bebés de meses con supervisión de sus padres.</p>
+      <a href="https://wa.me/000000000000" target="_blank" rel="noopener" class="btn-primary">📱 Solicitar presupuesto</a>
+    </div>
+    <div class="hero-photo">
+      <img src="images/hero.jpg" alt="Plaza blanda de Divertieventos armada en jardín" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="servicios" id="servicios">
+  <div class="wrap">
+    <span class="kicker">Nuestros servicios</span>
+    <h2>Todo lo que necesitás para <span class="sage">momentos inolvidables</span></h2>
+    <div class="serv-grid">
+      <div class="serv-card">
+        <div class="serv-photo"><div class="serv-badge">🧸</div><img src="images/plaza-soft.jpg" alt="Plaza Soft con piscina de pelotas, tobogán y peluches"></div>
+        <h3>Plaza Soft</h3>
+        <p>Espacios seguros y divertidos para que los niños jueguen, exploren y disfruten.</p>
+        <div class="heart-div">♥</div>
+      </div>
+      <div class="serv-card">
+        <div class="serv-photo"><div class="serv-badge">🌈</div><img src="images/montessori.jpg" alt="Juegos Montessori de madera: tobogán, triángulos y hamaca"></div>
+        <h3>Juegos Montessori</h3>
+        <p>Materiales que estimulan la creatividad, el aprendizaje y la autonomía.</p>
+        <div class="heart-div">♥</div>
+      </div>
+      <div class="serv-card">
+        <div class="serv-photo"><div class="serv-badge">🪑</div><img src="images/mesitas.jpg" alt="Mesita infantil blanca con sillas Chiavari"></div>
+        <h3>Mesitas infantiles</h3>
+        <p>Ideales para pintar, merendar o realizar actividades a su tamaño. Disponibles en distintos modelos.</p>
+        <div class="heart-div">♥</div>
+      </div>
+      <div class="serv-card">
+        <div class="serv-photo"><div class="serv-badge">🪄</div><img src="images/sillitas.jpg" alt="Sillitas infantiles decoradas para cumpleaños"></div>
+        <h3>Sillitas infantiles</h3>
+        <p>Cómodas, resistentes y seguras para los más pequeños. También en distintos modelos y colores.</p>
+        <div class="heart-div">♥</div>
+      </div>
+      <div class="serv-card">
+        <div class="serv-photo"><div class="serv-badge">🏕️</div><img src="images/carpitas.jpg" alt="Carpitas de pijamada con colchón, bandejita y luces"></div>
+        <h3>Carpitas de pijamada</h3>
+        <p>Carpas con colchón y bandejita decorada, perfectas para armar una pijamada inolvidable.</p>
+        <div class="heart-div">♥</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="porque" id="nosotros">
+  <div class="wrap">
+    <h2>¿Por qué elegir <br><span class="sage">Divertieventos?</span></h2>
+    <div class="porque-list">
+      <div class="porque-item"><div class="porque-ico">🛡️</div><span>Materiales seguros</span></div>
+      <div class="porque-item"><div class="porque-ico">✨</div><span>Juegos limpios e higienizados</span></div>
+      <div class="porque-item"><div class="porque-ico">💗</div><span>Atención personalizada</span></div>
+      <div class="porque-item"><div class="porque-ico">🎁</div><span>Ideal para cumpleaños y eventos</span></div>
+      <div class="porque-item"><div class="porque-ico">🙂</div><span>Diversión para niños de 1 a 5 años</span></div>
+      <div class="porque-item"><div class="porque-ico">👶</div><span>Bebés de meses con supervisión de un adulto</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="galeria" id="galeria">
+  <div class="wrap">
+    <h2>Mirálos en acción</h2>
+    <div class="gal-row">
+      <div class="gal-photo"><img src="images/galeria-1.jpg" alt="Plaza Soft de cerca con animalitos de peluche"></div>
+      <div class="gal-photo"><img src="images/galeria-2.jpg" alt="Evento infantil con plaza blanda y decoración"></div>
+      <div class="gal-photo"><img src="images/galeria-3.jpg" alt="Carpitas de pijamada con luces cálidas"></div>
+      <div class="gal-photo"><img src="images/galeria-4.jpg" alt="Carpitas de pijamada junto a mesa de actividades"></div>
+    </div>
+    <p class="gal-note">Así lucen algunos de nuestros eventos armados con amor.</p>
+    <a href="#contacto" class="btn-primary small">Enviar consulta</a>
+  </div>
+</section>
+
+<section class="cta-contact" id="contacto">
+  <div class="wrap">
+    <div class="cta-grid">
+      <div class="cta-col left">
+        <div class="av-big">📞</div>
+        <h3>¿Listos para armar un evento inolvidable?</h3>
+        <p>Escribinos y te ayudamos a elegir la mejor opción para vos.</p>
+        <a href="https://wa.me/000000000000" target="_blank" rel="noopener" class="btn-primary small">Escribinos por WhatsApp</a>
+      </div>
+      <div class="cta-col mid">
+        <h3>Contanos sobre tu evento</h3>
+        <form id="contactForm">
+          <div class="field-row">
+            <div class="field"><input type="text" placeholder="Nombre" required></div>
+            <div class="field"><input type="tel" placeholder="Teléfono" required></div>
+          </div>
+          <div class="field-row">
+            <div class="field"><input type="text" placeholder="Fecha del evento"></div>
+            <div class="field"><input type="text" placeholder="Cantidad de niños"></div>
+          </div>
+          <div class="field"><textarea rows="3" placeholder="Contanos tu consulta..."></textarea></div>
+          <button type="submit" class="btn-primary small" style="width:100%;justify-content:center;">Enviar consulta</button>
+          <p class="form-msg" id="formMsg">¡Gracias! Recibimos tu consulta — te contactaremos pronto. (Formulario de demostración, conectalo a tu backend o email real)</p>
+        </form>
+      </div>
+      <div class="cta-col right">
+        <h3>También nos encontrás en</h3>
+        <div class="also-item"><span class="ico">💬</span><span><strong>WhatsApp</strong><span>Respuesta rápida</span></span></div>
+        <div class="also-item"><span class="ico">📷</span><span><strong>Instagram</strong><span>@divertieventos</span></span></div>
+        <div class="also-item"><span class="ico">📍</span><span><strong>Zona de servicio</strong><span>Tu ciudad y alrededores</span></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="f-logo">
+      <svg width="32" height="32" viewBox="0 0 48 48" fill="none">
+        <path d="M6 30a18 18 0 0136 0" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
+        <path d="M12 30a12 12 0 0124 0" stroke="#EAB54B" stroke-width="4" stroke-linecap="round"/>
+        <path d="M18 30a6 6 0 0112 0" stroke="#7E9B77" stroke-width="4" stroke-linecap="round" opacity="0.7"/>
+      </svg>
+      <span><span class="name">Divertieventos</span><br><span class="tag">Diversión para los más pequeños</span></span>
+    </div>
+    <div class="f-social">
+      <a href="#" aria-label="Instagram">📷</a>
+      <a href="#" aria-label="Facebook">📘</a>
+      <a href="https://wa.me/000000000000" aria-label="WhatsApp">💬</a>
+    </div>
+    <div class="f-copy">© 2026 Divertieventos. Todos los derechos reservados.</div>
+  </div>
+</footer>
+
+<a href="https://wa.me/000000000000" target="_blank" rel="noopener" class="fab-wa" aria-label="Escribinos por WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.35 5.06L2 22l5.06-1.32A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.6 0-3.1-.44-4.38-1.2l-.31-.18-3.1.81.83-3.02-.2-.32A7.94 7.94 0 014 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8zm4.4-5.7c-.24-.12-1.42-.7-1.64-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1-.37-1.9-1.18-.7-.62-1.18-1.4-1.32-1.64-.14-.24-.02-.36.1-.48.1-.1.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.46-.4-.4-.54-.4h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.42-.58 1.62-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28z"/></svg>
+</a>
+
+<script>
+  const hbtn=document.getElementById('hamburgerBtn'),menu=document.getElementById('mobileMenu');
+  hbtn.addEventListener('click',()=>{menu.style.display=menu.style.display==='none'?'flex':'none';});
+  document.querySelectorAll('#mobileMenu a').forEach(a=>a.addEventListener('click',()=>menu.style.display='none'));
+  document.getElementById('contactForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    document.getElementById('formMsg').style.display='block';
+    this.reset();
+  });
+</script>
+
+</body>
+</html>
